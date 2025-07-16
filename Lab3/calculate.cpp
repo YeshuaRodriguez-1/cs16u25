@@ -2,23 +2,35 @@
 #include <cstdlib>
 using namespace std;
 
-// usage: ./calculate int char int
-// char can either be + x or %
-int main(int argc, char* argv[]){
-	// Part 1: Check to see if the number of arguments is correct
-	//	Hint: use "if (argc ...)" to check this,
-	//	use cerr to output any messages
+int main(int argc, char* argv[]) {
+	if (argc != 4) {
+        cerr << "Number of arguments is incorrect." << endl;
+        return 1;
+    }
 
-	// Part 2: Convert arguments into integers (only those that need it!)
-	// 	Hint: this means using atoi()
-	//	You can assume the two integer arguments, if they exist,
-	//	will be integers (so you don't need to error check here)
+	int num1 = atoi(argv[1]);
+	char op = argv[2][0];
+	int num2 = atoi(argv[3]);
 
-	// Part 3: Check for illegal operations like divide by zero...
-	//	use cerr to output any messages
+	if (op != '+' && op != '-' && op != '%') {
+        cerr << "Bad operation choice." << endl;
+        return 1;
+    }
+	if (op == '%' && num2 == 0) {
+        cerr << "Cannot divide by zero." << endl;
+        return 1;
+    }
 
-	// Part 4: Do the appropriate calculation,
-	//	outputs using cout
+	if (op == '+') {
+        cout << num1 + num2 << endl;
+    }
+	else if (op == '-') {
+        cout << num1 - num2 << endl;
+    }
+	else if (op == '%') {
+        cout << num1 % num2 << endl;
+    }
 
-	return 0;
+    return 0;
 }
+
