@@ -19,27 +19,93 @@ int main( )
     int size = MAXSIZE, array[MAXSIZE];
     getArray(ifs, FILENAME, array, size);
 
+print_array(array, size);
+	cout << "Max = " << maxArray(array, size) << endl;
+	cout << "Min = " << minArray(array, size) << endl;
+	cout << "Sum = " << sumArray(array, size) << endl;
+	cout << "Evens: ";
+	evensArray(array, size);
 
-    // hints for the tasks: 
-    // all that needs to be in here is simple calls the functions, like these: 
-    // in addition to, some print to std.out statements.
-    // 
-    // Your main() will ideally look clean and uncluttered and be made up
-    // mostly of function calls.
-    // 
-    // Example:
-    // ...
-    // print_array(array, size);
-    // max = maxArray(array, size);
-    // min = minArray(array, size);
-    // ...
-    // ...etc...
-    
+	cout << "Primes: ";
+	primesArray(array, size);
 
-    // PUT MISSING CODE HERE
+	cout << "Searches:" << endl;
+	AllSearches(array, size);
 
-    return 0;
+return 0;
 }
 
-// PUT MISSING FUNCTION DEFINITIONS HERE
+void print_array(int arr[], int asize) {
+for (int i = 0; i < asize; ++i) {
+	cout << arr[i];
+        if (i != asize - 1) cout << ", ";
+}
+cout << endl;
+}
+
+int maxArray(int arr[], int asize) {
+
+	int max = arr[0];
+	for (int i = 1; i < asize; ++i)
+        if (arr[i] > max)
+		max = arr[i];
+	return max;
+}
+
+int minArray(int arr[], int asize) {
+	int min = arr[0];
+	for (int i = 1; i < asize; ++i)
+        if (arr[i] < min)
+		min = arr[i];
+	return min;
+}
+
+int sumArray(int arr[], int asize) {
+	int sum = 0;
+	for (int i = 0; i < asize; ++i)
+        sum += arr[i];
+	return sum;
+}
+
+void evensArray(int arr[], int asize) {
+
+	for (int i = 0; i < asize; ++i) {
+	if (arr[i] % 2 == 0)
+	cout << arr[i] << ", ";
+	}
+cout << "end" << endl;
+}
+
+bool isPrime(int n) {
+	if (n < 2) return false;
+	for (int i = 2; i * i <= n; ++i)
+		if (n % i == 0) return false;
+	return true;
+}
+
+void primesArray(int arr[], int asize) {
+	for (int i = 0; i < asize; ++i) {
+        if (arr[i] > 0 && isPrime(arr[i]))
+	cout << arr[i] << ", ";
+	}
+cout << "end" << endl;
+}
+
+int SeqSearch(int arr[], int asize, int target) {
+for (int i = 0; i < asize; ++i)
+if (arr[i] == target)
+return i;
+return -1;
+}
+
+void AllSearches(int arr[], int asize) {
+	for (int i = 0; i < NSEARCHES; ++i) {
+        int index = SeqSearch(arr, asize, SEARCHES[i]);
+        cout << "Looking for " << SEARCHES[i] << ". ";
+        if (index != -1)
+	cout << "Found at index: " << index << endl;
+        else
+cout << "Not Found!" << endl;
+    }
+}
 
