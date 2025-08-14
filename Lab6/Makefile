@@ -17,7 +17,10 @@ tests: ${BINARIES}
 	./initBoxTest
 	./areaOfBoxTest
 	./pointToStringTest
+	./boxToStringTest
 
+boxToStringTest: boxToStringTest.o $(COMMON_OBJECTS)
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ -o $@
 
 distanceBetweenTest: distanceBetweenTest.o $(COMMON_OBJECTS)
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $^ -o $@
