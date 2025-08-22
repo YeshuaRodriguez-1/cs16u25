@@ -4,7 +4,10 @@ using namespace std;
 
 class Sprite {
     private:
-        // DECLARE MEMBER VARIABLES HERE
+string name;
+double x;
+double y;
+double size; 
     public:
         Sprite();
         Sprite(string n, double s);
