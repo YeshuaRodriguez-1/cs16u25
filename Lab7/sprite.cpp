@@ -53,13 +53,13 @@ return name + " is a sprite of size " + to_string(size) +
 }
 
 //Getters
-string Sprite::getName()       { return name; }
-double Sprite::getXPosition()  { return x; }
-double Sprite::getYPosition()  { return y; }
-double Sprite::getSize()       { return size; }
+string Sprite::getName(){ return name; }
+double Sprite::getXPosition(){ return x; }
+double Sprite::getYPosition(){ return y; }
+double Sprite::getSize(){ return size; }
 
 //Setters 
-void Sprite::setName(string n)        { name = n; }
+void Sprite::setName(string n) { name = n; }
 void Sprite::setXPosition(double pos) { x = pos; }
 void Sprite::setYPosition(double pos) { y = pos; }
 void Sprite::setSize(double s) {
