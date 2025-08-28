@@ -1,13 +1,15 @@
-// Declare your FOUR functions here (no more, no less):
-// That is, the 3 functions for the selectionSort:
-// swap_values, find_index_of_swap, sort
-// plus the function getArray
+#ifndef HEADERS_HPP
+#define HEADERS_HPP
+#include <string>
+#include <fstream>
 
 
-// Constants for the data file that your program is reading in
-// Only change these if you want to test your program with a different array file
-// than the one provided for you (ArrayFile.txt).
-//
 const int MAXSIZE = 20;     // amount of integers in the file (you need this to declare your array size)
 const std::string FILENAME = "ArrayFile.txt";    // The file name with the integers
 
+void swap_values(int& a, int& b);
+int  find_index_of_swap(bool descending, const int arr[], int n, int start_idx);
+void sort(bool descending, int arr[], int n, int start_idx);
+void getArray(std::ifstream& fin, const std::string& filename, int arr[], int& n);
+
+#endif
