@@ -1,46 +1,36 @@
 #include <iostream>
 #include <fstream>
-#include <cstdlib>
-#include <string>
+#include "headers.hpp"
+
 using namespace std;
 
-#include "headers.hpp"
-#include "functions.cpp"
-
 int main() {
-    // This is an example of the program running and testing
-    // an integer array found inside of an input file.
-    // You can use this or a modified version of it for your testing.
-    // We will have our own test suite.
+ifstream ifs;
+int size = MAXSIZE;
+int array[MAXSIZE];
 
-    // READ THE ARRAY FROM THE FILE
-    ifstream ifs;
-    int size = MAXSIZE, array[MAXSIZE];
-    getArray(ifs, FILENAME, array, size);
+getArray(ifs, FILENAME, array, size);
 
-    // PRINT THE ORIGINAL ARRAY
-    cout << "Original array:\n";
-    for(int i = 0; i < size; i++){
-        cout << array[i] << " ";
-    }
-    cout << endl;
+cout << "Original array:\n\n";
+for (int i = 0; i < size; ++i) {
+cout << array[i];
+if (i + 1 < size) cout << ' ';
+}
+cout << "\n\n";
 
-    // ASK THE USER FOR SORT DIRECTION FIRST.
-    bool descending;
-    cout << "Ascending (0) or Descending (1): ";
-    cin >> descending;
+cout << "Ascending (0) or Descending (1): ";
+int choice = 0;
+cin >> choice;
+cout << "\n";
 
-    // CALL THE SELECT SORT FUNCTION
-    // Requirement: HAS TO BE DESIGNED AS A RECURSIVE FUNCTION
-    int starting_index = 0;
-    sort(descending, array, size, starting_index);
+bool descending = (choice == 1);
+sort(descending, array, size, 0);
 
-    // PRINT THE NOW SORTED ARRAY
-    cout << "Sorted array:\n";
-    for(int i = 0; i < size; i++){
-        cout << array[i] << " ";
-    }
-    cout << endl;
-
-	return 0;
+cout << "Sorted array:\n\n";
+for (int i = 0; i < size; ++i) {
+cout << array[i];
+if (i + 1 < size) cout << ' ';
+}
+cout << '\n';
+return 0;
 }
